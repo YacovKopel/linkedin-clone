@@ -5,7 +5,6 @@ import Header from './Header'
 function App() {
   return (
     <div className="App">
-      LEts build a linked in CLone
 
     <Header />
 
