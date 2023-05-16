@@ -7,7 +7,9 @@ function App() {
     <div className="App">
 
     <Header />
-
+<div className='app_body'>
+  <Sidebar />
+</div>
     {/* {APPBoDY
       SIDEBAR
       FEED
