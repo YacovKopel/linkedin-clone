@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { login } from './features/userSlice'
 
 
+
 function Login() {
     const[name, setName]=useState('')
     const[email, setEmail]=useState('')
@@ -13,8 +14,7 @@ const[profileURL, setProfileURL]=useState('')
 
 const dispatch=useDispatch()
 
-
-    const register=() => {
+    const signUp=() => {
         if(!name){
             return alert("Please enter full name")
         }
@@ -49,9 +49,10 @@ const dispatch=useDispatch()
                 displayName: userAuth.user.displayName,
                 profileURL: userAuth.user.photoURL
         }))
-    }).catch(error => alert(error))
+    }).catch(error => alert(error))}
 
-    }
+
+    
   return (
     <div className='login'>
         <img src='/linkedin.png' alt='linkedin logo'/>
@@ -62,7 +63,7 @@ const dispatch=useDispatch()
             <input value={password} onChange={(e)=> setPassword(e.target.value)} type="password" placeholder="Password"/>
             <button type='submit' onClick={loginToApp}>Sign In</button>
         </form>
-        <p>Don't have an account?   <a onClick={register} className='login-register' href='/register'>Register Now</a></p>
+        <p>Don't have an account?   <a onClick={signUp} className='login-register' href='/register'>Register Now</a></p>
     </div>
   )
 }

@@ -26,7 +26,7 @@ function App() {
         console.log("user not logged in");
       }
     })
-  },[])
+  },[dispatch])
 
   return (
     <div className="app">
