@@ -13,7 +13,7 @@ function App() {
   const dispatch= useDispatch()
   useEffect(()=>
   {
-    auth.onAuthStateChange(userAuth =>{
+    auth.onAuthStateChanged(userAuth =>{
       if(userAuth){
         dispatch(login({
           email:userAuth.email,

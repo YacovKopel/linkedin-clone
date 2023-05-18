@@ -4,6 +4,7 @@ import { auth } from './firebase'
 import { useDispatch } from 'react-redux'
 import { login } from './features/userSlice'
 
+
 function Login() {
     const[name, setName]=useState('')
     const[email, setEmail]=useState('')
@@ -40,6 +41,16 @@ const dispatch=useDispatch()
 
     const loginToApp= (e) => {
         e.preventDefault()
+        auth.signInWithEmailAndPassword(email,password)
+        .then(userAuth => {
+            dispatch(login({
+                email:userAuth.user.email,
+                uid: userAuth.user.uid,
+                displayName: userAuth.user.displayName,
+                profileURL: userAuth.user.photoURL
+        }))
+    }).catch(error => alert(error))
+
     }
   return (
     <div className='login'>
