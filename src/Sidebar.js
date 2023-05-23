@@ -16,9 +16,9 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar_top">
-        <img src="" alt="" />
-        <Avatar src={user.photoURL} className="sidebar_avatar">{user.email[0].charAt(0).toUpperCase()}</Avatar>
-        <h2>{user.displayName}</h2>
+        <img src="./colorbg.jpg" alt="" />
+        <Avatar src={user.photoUrl} className="sidebar_avatar">{user.email[0].charAt(0).toUpperCase()}</Avatar>
+        <h2>{user.displayName.charAt(0).toUpperCase() + user.displayName.slice(1)}</h2>
         <h4>{user.email}</h4>
       </div>
 
@@ -29,16 +29,16 @@ function Sidebar() {
         </div>
         <div className="sidebar_stat">
           <p>Views on post</p>
-          <p className="sidebar_statNumber">1,393</p>
+          <p className="sidebar_statNumber">2,177</p>
         </div>
       </div>
 
       <div className="sidebar_bottom">
         <p>Recent</p>
-        {recentItem("reactjs")}
-        {recentItem("software developer")}
-        {recentItem("programming")}
-        {recentItem("design")}
+        {recentItem("React.js")}
+        {recentItem("Software Developer")}
+        {recentItem("Programming")}
+        {recentItem("Design")}
       </div>
     </div>
   );

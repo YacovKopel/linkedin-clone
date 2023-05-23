@@ -9,11 +9,12 @@ import {
   ThumbUpAltOutlined,
 } from "@mui/icons-material";
 
- const Post= forwardRef( ({ name, description, message, photoURL }, ref)=> {
+ const Post= forwardRef( ({ name, description, message, photoUrl }, ref)=> {
+  
   return (
     <div ref={ref} className="post">
       <div className="post_header">
-        <Avatar src={photoURL}>{name[0]}</Avatar>
+        <Avatar src={photoUrl}>{name[0]}</Avatar>
         <div className="post_info">
           <h2>{name}</h2>
           <p>{description}</p>

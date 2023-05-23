@@ -11,7 +11,7 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBvpiR6VHQx2oO39MOvUL3nTAt3YlXMRXc",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "linkedin-clone-a049a.firebaseapp.com",
   projectId: "linkedin-clone-a049a",
   storageBucket: "linkedin-clone-a049a.appspot.com",

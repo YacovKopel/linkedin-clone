@@ -16,6 +16,8 @@ function Login() {
 const[password, setPassword]=useState('')
 const[profileURL, setProfileURL]=useState('')
 
+
+
 const dispatch=useDispatch()
 
     const signUp=() => {
@@ -34,7 +36,7 @@ const dispatch=useDispatch()
                         email:userAuth.user.email,
                         uid: userAuth.user.uid,
                         displayName: name,
-                        photoURL: profileURL
+                        photoUrl: profileURL
                     })
                     )
                     )

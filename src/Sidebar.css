@@ -9,6 +9,8 @@
 
 .sidebar_avatar {
   margin-bottom: 10px;
+  width: 60px;
+  height: 60px;
 }
 
 .sidebar_top {
@@ -75,6 +77,7 @@
 .sidebar_bottom > p {
   font-size: 13px;
   padding-bottom: 10px;
+  font-weight: 600;
 }
 
 .sidebar_recentItem {

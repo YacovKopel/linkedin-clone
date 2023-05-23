@@ -21,7 +21,7 @@ function App() {
           email:userAuth.email,
           uid: userAuth.uid,
           displayName: userAuth.displayName,
-          photoURL: userAuth.photoURL}))
+          photoUrl: userAuth.photoURL}))
         console.log("user logged in");
       }else{
         dispatch(logout())
