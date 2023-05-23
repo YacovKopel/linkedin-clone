@@ -4,7 +4,7 @@ import { BusinessCenter, Chat, Home, Notifications, Search, SupervisorAccount } 
 import HeaderOption from './HeaderOption'
 import { logout } from './features/userSlice'
 import { auth } from './firebase'
-import { useDispatch } from 'react-redux'
+import { useDispatch} from 'react-redux'
 
 
 function Header() {
@@ -32,7 +32,7 @@ function Header() {
     <HeaderOption Icon={BusinessCenter} title="Jobs"/>
     <HeaderOption Icon={Chat} title="Home"/>
     <HeaderOption Icon={Notifications} title="Notification"/>
-    <HeaderOption onClick={logoutOfApp} title='Me' avatar="https://media.licdn.com/dms/image/D5635AQE9ggjXQLkT9w/profile-framedphoto-shrink_400_400/0/1676571398237?e=1684872000&v=beta&t=4Zh7vQva1hbYHB9EPK8YklC30zU5UqpRm0VY_9rLWwA"/>
+    <HeaderOption onClick={logoutOfApp} title='Me' avatar={true}/>
 
 
 

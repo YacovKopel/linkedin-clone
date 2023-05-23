@@ -11,11 +11,15 @@ import InputOption from "./InputOption";
 import Post from "./Post";
 import { db } from "./firebase";
 import { collection, onSnapshot, addDoc, serverTimestamp, query, orderBy } from 'firebase/firestore';
+import { useSelector } from "react-redux";
+import { selectUser } from "./features/userSlice";
 
 function Feed() {
 
     const[posts, setPosts]=useState([])
     const[input, setInput] = useState('')
+
+    const user= useSelector(selectUser)
 
       useEffect(() => {
         const q = query(collection(db, 'posts'), orderBy('timestamp', 'desc'));
@@ -34,33 +38,15 @@ function Feed() {
         e.preventDefault();
     
         addDoc(collection(db, 'posts'), {
-          name: 'Yacov',
-          description: 'This is a test',
+          name: user.displayName,
+          description: user.email,
           message: input,
-          photoUrl: '',
+          photoUrl: user.photoUrl || "",
           timestamp: serverTimestamp(),
         });
     
         setInput('');
       };
-    // useEffect(() => {
-    //     db.collection("posts").onSnapshot((snapshot)=>
-    //      setPosts(snapshot.docs.map((doc) => (
-    //         {id:doc.id,
-    //             data:doc.data(),}
-    //             ))))}
-    //             ,[])
-    
-    // const sendPost=e=>{
-    //     e.preventDefault()
-    //     db.collection("posts").addDoc({
-    //         name:"Yacov",
-    //         description: "this is a test",
-    //         message:input,
-    //         photoUrl:'',
-    //         timestamp:firebase.firestore.FieldValue.serverTimestamp()
-    //     })
-    // }
 
   return (
     <div className="feed">
