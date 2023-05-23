@@ -7,6 +7,10 @@ import { selectUser } from "./features/userSlice";
 function Sidebar() {
     const user = useSelector(selectUser);
 
+    const getRandomNumber = (min, max) => {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+
   const recentItem = (topic) => (
     <div className="sidebar_recentItem">
       <span className="sidebar_hash">#</span>
@@ -25,11 +29,11 @@ function Sidebar() {
       <div className="sidebar_stats">
         <div className="sidebar_stat">
           <p>Who viewed you</p>
-          <p className="sidebar_statNumber">1,393</p>
+          <p className="sidebar_statNumber">{getRandomNumber(100, 5000)}</p>
         </div>
         <div className="sidebar_stat">
           <p>Views on post</p>
-          <p className="sidebar_statNumber">2,177</p>
+          <p className="sidebar_statNumber">{getRandomNumber(200, 1000)}</p>
         </div>
       </div>
 
