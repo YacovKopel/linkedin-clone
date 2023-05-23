@@ -6,16 +6,17 @@ import Feed from "./Feed";
 import Login from "./Login";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, login, logout } from "./features/userSlice";
-import { auth } from "./firebase";
+import { auth, onAuthStateChanged } from "./firebase";
+
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch= useDispatch()
-  useEffect(()=>
-  {
-    auth.onAuthStateChanged(userAuth =>{
+  useEffect(()=>{
+    onAuthStateChanged(auth, (userAuth) =>{
       if(userAuth){
-        dispatch(login({
+        dispatch(
+          login({
           email:userAuth.email,
           uid: userAuth.uid,
           displayName: userAuth.displayName,
@@ -26,7 +27,7 @@ function App() {
         console.log("user not logged in");
       }
     })
-  },[dispatch])
+  },[])
 
   return (
     <div className="app">
