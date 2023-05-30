@@ -1,47 +1,44 @@
-.inputOption{
-    display: flex;
-    align-items: center;
-    margin-top: 15px;
-    padding: 10px;
-    color: gray;
-    cursor: pointer;
-    position: relative;
+.inputOption {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  padding: 10px;
+  color: gray;
+  cursor: pointer;
+  position: relative;
 }
 
-.inputOption:hover{
-    background-color: whitesmoke;
-    border-radius: 10px;
-
+.inputOption:hover {
+  background-color: whitesmoke;
+  border-radius: 10px;
 }
 
-.inputOption > h4{
-    margin-left: 5px;
+.inputOption > h4 {
+  margin-left: 5px;
 }
 
 .inputOption .confetti-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 @keyframes bang {
-    from {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-    }
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
-  
-  
-  .inputOption i {
-    position: absolute;
-    display: block;
-    left: 50%;
-    top: 0;
-    width: 3px;
-    height: 8px;
-    background: red;
-    opacity: 0;
-  }
-  
+}
+
+.inputOption i {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 0;
+  width: 3px;
+  height: 8px;
+  background: red;
+  opacity: 0;
+}

@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 import { selectUser } from "./features/userSlice";
 
 function Sidebar() {
-    const user = useSelector(selectUser);
+  const user = useSelector(selectUser);
 
-    const getRandomNumber = (min, max) => {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    };
+  const getRandomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
   const recentItem = (topic) => (
     <div className="sidebar_recentItem">
@@ -21,8 +21,12 @@ function Sidebar() {
     <div className="sidebar">
       <div className="sidebar_top">
         <img src="./colorbg.jpg" alt="" />
-        <Avatar src={user.photoUrl} className="sidebar_avatar">{user.email[0].charAt(0).toUpperCase()}</Avatar>
-        <h2>{user.displayName.charAt(0).toUpperCase() + user.displayName.slice(1)}</h2>
+        <Avatar src={user.photoUrl} className="sidebar_avatar">
+          {user.email[0].charAt(0).toUpperCase()}
+        </Avatar>
+        <h2>
+          {user.displayName.charAt(0).toUpperCase() + user.displayName.slice(1)}
+        </h2>
         <h4>{user.email}</h4>
       </div>
 

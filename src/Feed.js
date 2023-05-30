@@ -10,44 +10,52 @@ import "./Feed.css";
 import InputOption from "./InputOption";
 import Post from "./Post";
 import { db } from "./firebase";
-import { collection, onSnapshot, addDoc, serverTimestamp, query, orderBy } from 'firebase/firestore';
+import {
+  collection,
+  onSnapshot,
+  addDoc,
+  serverTimestamp,
+  query,
+  orderBy,
+} from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { selectUser } from "./features/userSlice";
 import FlipMove from "react-flip-move";
 
 function Feed() {
+  const [posts, setPosts] = useState([]);
+  const [input, setInput] = useState("");
 
-    const[posts, setPosts]=useState([])
-    const[input, setInput] = useState('')
+  const user = useSelector(selectUser);
 
-    const user= useSelector(selectUser)
+  useEffect(() => {
+    const q = query(collection(db, "posts"), orderBy("timestamp", "desc"));
 
-      useEffect(() => {
-        const q = query(collection(db, 'posts'), orderBy('timestamp', 'desc'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      setPosts(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      );
+    });
 
-        const unsubscribe = onSnapshot(q, (snapshot) => {
-          setPosts(snapshot.docs.map((doc) => ({
-            id: doc.id,
-            data: doc.data(),
-          })));
-        });
-    
-        return () => unsubscribe();
-      }, []);
-    
-      const sendPost = (e) => {
-        e.preventDefault();
-    
-        addDoc(collection(db, 'posts'), {
-          name: user.displayName,
-          description: user.email,
-          message: input,
-          photoUrl: user.photoUrl || "",
-          timestamp: serverTimestamp(),
-        });
-    
-        setInput('');
-      };
+    return () => unsubscribe();
+  }, []);
+
+  const sendPost = (e) => {
+    e.preventDefault();
+
+    addDoc(collection(db, "posts"), {
+      name: user.displayName,
+      description: user.email,
+      message: input,
+      photoUrl: user.photoUrl || "",
+      timestamp: serverTimestamp(),
+    });
+
+    setInput("");
+  };
 
   return (
     <div className="feed">
@@ -55,8 +63,15 @@ function Feed() {
         <div className="feed_input">
           <Create />
           <form>
-            <input value={input} onChange={e=> setInput(e.target.value)} type="text" placeholder="What's on your mind?" />
-            <button onClick={sendPost} type="submit">Send</button>
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              type="text"
+              placeholder="What's on your mind?"
+            />
+            <button onClick={sendPost} type="submit">
+              Send
+            </button>
           </form>
         </div>
         <div className="feed_inputOptions">
@@ -71,18 +86,16 @@ function Feed() {
         </div>
       </div>
       <FlipMove>
-      {posts.map(({id, data:{name, description, message, photoUrl}}) =>
-       (<Post
-      key={id}
-      name={name.charAt(0).toUpperCase() + name.slice(1)}
-      description={description}
-      message={message}
-      photoUrl={photoUrl}
-      
-      />))}
-
+        {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+          <Post
+            key={id}
+            name={name.charAt(0).toUpperCase() + name.slice(1)}
+            description={description}
+            message={message}
+            photoUrl={photoUrl}
+          />
+        ))}
       </FlipMove>
-
     </div>
   );
 }
