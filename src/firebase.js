@@ -13,11 +13,11 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: "linkedin-clone-a049a.firebaseapp.com",
-  projectId: "linkedin-clone-a049a",
-  storageBucket: "linkedin-clone-a049a.appspot.com",
-  messagingSenderId: "699192358963",
-  appId: "1:699192358963:web:24c9c6cef1e2f301280b46",
+  authDomain: "linkedin-clone-3-32f8d.firebaseapp.com",
+  projectId: "linkedin-clone-3-32f8d",
+  storageBucket: "linkedin-clone-3-32f8d.appspot.com",
+  messagingSenderId: "988496052690",
+  appId: "1:988496052690:web:6b0f8a92cb16a941dbc80b"
 };
 
 // Initialize Firebase
