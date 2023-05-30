@@ -17,17 +17,32 @@ function Sidebar() {
       <p>{topic}</p>
     </div>
   );
+
+  const renderAvatar = () => {
+    if (user && user.photoUrl) {
+      return (
+        <Avatar src={user.photoUrl} className="sidebar_avatar">
+          {user.displayName && user.displayName[0].toUpperCase()}
+        </Avatar>
+      );
+    } else {
+      return (
+        <Avatar className="sidebar_avatar">
+          {user && user.displayName && user.displayName[0].toUpperCase()}
+        </Avatar>
+      );
+    }
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar_top">
-        <img src="./colorbg.jpg" alt="" />
-        <Avatar src={user.photoUrl} className="sidebar_avatar">
-          {user.email[0].charAt(0).toUpperCase()}
-        </Avatar>
+        <img src="./colorbg.jpg" alt="backgroung color" />
+        {renderAvatar()}
         <h2>
-          {user.displayName.charAt(0).toUpperCase() + user.displayName.slice(1)}
+          {user && user.displayName && user.displayName[0].toUpperCase() + user.displayName.slice(1)}
         </h2>
-        <h4>{user.email}</h4>
+        <h4>{user && user.email}</h4>
       </div>
 
       <div className="sidebar_stats">

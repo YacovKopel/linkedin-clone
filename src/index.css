@@ -1,2 +1,6 @@
 *{
   margin: 0;}
+
+  body > iframe {
+    display: none;
+  }

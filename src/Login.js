@@ -14,6 +14,8 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [profileURL, setProfileURL] = useState("");
+  const [signupError, setSignupError] = useState(null);
+  const [loginError, setLoginError] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -42,7 +44,7 @@ function Login() {
           });
       })
       .catch((err) => {
-        alert(err);
+        setSignupError(err.message);
       });
   };
 
@@ -60,13 +62,15 @@ function Login() {
         );
       })
       .catch((err) => {
-        alert(err);
+        setLoginError(err.message);
       });
   };
 
   return (
     <div className="login">
       <img src="/linkedin.png" alt="linkedin logo" />
+      {signupError && <p className="error">{signupError}</p>}
+      {loginError && <p className="error">{loginError}</p>}
       <form>
         <input
           value={name}

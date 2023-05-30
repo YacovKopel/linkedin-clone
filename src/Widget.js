@@ -4,17 +4,24 @@ import "./Widget.css";
 
 function Widget() {
   const [articles, setArticles] = useState([]);
-  const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
 
   useEffect(() => {
     const fetchArticles = async () => {
+      const url =
+        "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI?q=technology&pageNumber=1&pageSize=10&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null";
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": process.env.REACT_APP_NEWS_API_KEY,
+          "X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+        },
+      };
+
       try {
-        const response = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=10&apiKey=${API_KEY}`
-        );
+        const response = await fetch(url, options);
         const data = await response.json();
         console.log(data);
-        const { articles } = data;
+        const { value: articles } = data;
         setArticles(articles);
       } catch (error) {
         console.error(error);
